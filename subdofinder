@@ -1,0 +1,38 @@
+#!/usr/bin/bash
+#bersihkan layar
+#author indofans
+blue='\e[0;34'
+cyan='\e[0;36m'
+green='\e[0;34m'
+okegreen='\033[92m'
+lightgreen='\e[1;32m'
+white='\e[1;37m'
+red='\e[1;31m'
+yellow='\e[1;33m'
+clear
+
+banner(){
+echo -e $red"======================================="
+echo -e $white" TOOLS SUBDOMAIN SCANNER BY INDOFANS"
+echo ""
+echo -e $white" 	BANDUNG6ETAR TEAM	"
+echo -e $red"======================================="
+}
+banner
+echo -e $yellow"Input Domain Example : target.com"
+echo ""
+echo -n -e $okegreen"INPUT DOMAIN NAME => "
+read -r weburlip
+
+echo -e $okegreen"[#] SUBDOMAIN SCANNER RUNNING NOW [#]"
+
+if [[ ! $weburlip ]];
+	then
+	echo -e $red"ERROR / INPUT NOT CORRET"
+	exit 1
+	fi
+
+curl -s --request GET \ --url "https://sonar.omnisint.io/subdomains/$weburlip"  \ | jq >> subdo.txt
+echo ""
+clear
+echo -e $okegreen"RESULT SAVED TO SUBDO.TXT"
